@@ -5,19 +5,38 @@ describe Glasshouse do
     expect(Glasshouse::VERSION).not_to be nil
   end
 
-  describe '#grow' do
+  describe '#plant' do
     it "adds a value to the Env Vars during a block" do
-      Glasshouse.grow({"bulb" => "tulip"}) do
+      Glasshouse.plant({"bulb" => "tulip"}) do
         expect(ENV['bulb']).to match "tulip"
       end
     end
 
     it "removes the value after the block" do
-      Glasshouse.grow({"sprout" => "bean"}) do
+      Glasshouse.plant({"sprout" => "bean"}) do
         #null op
       end
 
       expect(ENV['sprout']).to be_nil
+    end
+
+    describe "used in nest" do
+      it "will overwrite existing values" do
+        Glasshouse.plant({"robins_egg" => "blue"}) do
+          Glasshouse.plant({"robins_egg" => "green"}) do
+            expect(ENV["robins_egg"]).to match "green"
+          end
+        end
+      end
+
+      it "will restore those values afterwards" do
+        Glasshouse.plant({"st_clemens" => "oranges"}) do
+          Glasshouse.plant({"st_clemens" => "lemons"}) do
+          end
+
+          expect(ENV["st_clemens"]).to match "oranges"
+        end
+      end
     end
   end
 
