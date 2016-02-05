@@ -1,22 +1,6 @@
 # Glasshouse
 
-Have a known environment for running code.  Grow the lushest code and juciest methods.
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'glasshouse'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install glasshouse
+Have a known ENV for running code.  Grow the lushest code and juciest methods.
 
 ## Usage
 
@@ -40,7 +24,22 @@ end
 ENV[:peppers] #=> 'awful'
 ``` 
 
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'glasshouse'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install glasshouse
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/glasshouse. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
-
