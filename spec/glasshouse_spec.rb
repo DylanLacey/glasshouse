@@ -20,7 +20,7 @@ describe Glasshouse do
       expect(ENV['sprout']).to be_nil
     end
 
-    describe "used in nest" do
+    describe "nested" do
       it "will overwrite existing values" do
         Glasshouse.plant({"robins_egg" => "blue"}) do
           Glasshouse.plant({"robins_egg" => "green"}) do
@@ -31,8 +31,7 @@ describe Glasshouse do
 
       it "will restore those values afterwards" do
         Glasshouse.plant({"st_clemens" => "oranges"}) do
-          Glasshouse.plant({"st_clemens" => "lemons"}) do
-          end
+          Glasshouse.plant({"st_clemens" => "lemons"}) {}
 
           expect(ENV["st_clemens"]).to match "oranges"
         end
@@ -52,9 +51,7 @@ describe Glasshouse do
     end
 
     it "restores the value after the block" do
-      Glasshouse.prune(["roses"]) do
-        #null op
-      end
+      Glasshouse.prune(["roses"]) {}
 
       expect(ENV["roses"]).to match "thorny"
     end
